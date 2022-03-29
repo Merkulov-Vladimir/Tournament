@@ -4,20 +4,22 @@ import ru.netology.game.domain.NotRegisteredException;
 import ru.netology.game.domain.Player;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Game {
-    private List<Player> players = new ArrayList<>();
+    private Map<String, Player> players = new HashMap<>();
 
     public void register(Player player) {
-        this.players.add(player);
+        this.players.put(player.getName(), player);
     }
 
     public int round(String playerName1, String playerName2) {
-        var first = findPlayer(playerName1);
-        var second = findPlayer(playerName2);
+        var first = players.get(playerName1);
+        var second = players.get(playerName2);
         if (first == null || second == null) {
-            throw new NotRegisteredException ("One or both players are not registered");
+            throw new NotRegisteredException("One or both players are not registered");
         }
         var result = first.getStrength() - second.getStrength();
         if (result > 0) {
@@ -28,13 +30,5 @@ public class Game {
         return 0;
     }
 
-    private Player findPlayer(String name) {
-        for (Player player : players) {
-            if (player.getName().equalsIgnoreCase(name)) {
-                return player;
-            }
-        }
-        return null;
-    }
 
 }

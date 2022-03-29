@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameTest {
     private Game game = new Game();
     private Player first = new Player(1, "first", 1);
-    private Player second = new Player(2, "SecOnd", 2);
+    private Player second = new Player(2, "Second", 2);
     private Player third = new Player(3, "third", 3);
     private Player forth = new Player(4, "forth", 3);
     private Player firth = new Player(5, "firth", 44);
